@@ -1,19 +1,29 @@
+# 1. Fix the errors in `newsletter.rb` so that it runs without errors # done?
+
+
+
+# 5. Write the body of `print_one_article` to print a string with the formatted article
+# 6. Write the `print_many_articles` method to print all the articles
+# 7. Run your code with `ruby newsletter.rb` and verify that it matches the sample output in `sample_output.txt`
+
+
+
 require 'pry'
 
 #########################
 # Data for the newsletter
 #########################
-require "pry"
-CAMPUS = {
+campus = {
   "name": "DC",
   "address": "1440 G St NW, Washington, DC 20005",
 }
-DATE = "Nov 20, 2019"
 
-SUBSCRIBERS = ["rhona@grimes.info", "cedricschmidt@robel.io", "edmond@ko.org", "bryant@cummingsfisher.biz", "alverta@bernhard.name"]
-UNSUBSCRIBED = ["cedricschmidt@robel.io", "alverta@bernhard.name"]
+date = "Nov 20, 2019"
 
-ARTICLES = [
+subscribers = ["rhona@grimes.info", "cedricschmidt@robel.io", "edmond@ko.org", "bryant@cummingsfisher.biz", "alverta@bernhard.name"]
+unsubscribed = ["cedricschmidt@robel.io", "alverta@bernhard.name"]
+
+articles = [
   {"author": "Destiny Blanda Bruen II", "title": "Mining", "text": "The orthogonal features, when combined, can explode into complexity."},
   {"author": "Robin Flatley Hilpert", "title": "Retail", "text": "In our daily lives as programmers, we process text strings a lot. So I tried to work hard on text processing, namely the string class and regular expressions. Regular expressions are built into the language and are very tuned up for use."},
   {"author": "Olevia Torphy Kuvalis", "title": "Technology", "text": "Imagine you are writing an email. You are in front of the computer. You are operating the computer, clicking a mouse and typing on a keyboard, but the message will be sent to a human over the internet. So you are working before the computer, but with a human behind the computer."},
@@ -23,24 +33,39 @@ ARTICLES = [
   {"author": "Tony Keeling Cartwright", "title": "Design", "text": "Often people, especially computer engineers, focus on the machines. But in fact we need to focus on humans, on how humans care about doing programming or operating the application of the machines."},
 ]
 
+
+
 #########################
 # Methods to generate the newsletter
 #########################
 
-def calculate_recipients
-  # Using the SUBSCRIBERS and UNSUBSCRIBED arrays,
-  # write a method that will return an array of only the subscribers who haven't unsubscribed
+# 3. Write the `calculate_recipients` method to return only the recipients that haven't unsubscribed
+def calculate_recipients(subscribers)
+  subscribers.map do |subscriber|
+    subscriber
+  end
+  subscribers
 end
 
-def first_n_articles(number_of_articles
+def first_n_articles(number_of_articles)
   ARTICLES.first(number_of_articles)
 end
 
-def print_recipients
+# 4. Write the `print_recipients` method to print a string with a list of the correct recipients
+def print_recipients(output_calculate_recipients)
   # Write a method that uses the output of calculate_recipients
   # and returns a list of emails separated by commas
   # Ex) "abc@email.com, def@email.com, ghi@email.com"
+  output_calculate_recipients = calculate_recipients
+  final_list = ""
+
+  output_calculate_recipients.each do |recipient|
+    final_list << recipient
+  end
+  p final_list
 end
+
+binding.pry
 
 def print_one_article(article)
   # Write a method that will take an article hash
@@ -53,8 +78,9 @@ def print_many_articles(articles)
   # and format each one using the print_one_article method
 end
 
+# 2. Fix the `format_campus_location` method so that it has the correct output
 def format_campus_location(campus)
-  "Flatiron #{campus["name"]}"
+  "Flatiron #{campus[:name]}"
 end
 
 def format_subject
@@ -80,7 +106,7 @@ def print_newsletter(number)
   print_many_articles(articles)
   puts format_footer(CAMPUS)
 
-  end
+  # end
 end
 
 def run

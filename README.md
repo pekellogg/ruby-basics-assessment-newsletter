@@ -20,7 +20,7 @@ Make edits to `newsletter.rb`. As you do, you can run the code with `ruby newsle
 
 These should be completed in order - each step builds on the previous steps. See below for a more detailed explanation of each step.
 
-1. Fix the errors in `newsletter.rb` so that it runs without errors
+1. Fix the errors in `newsletter.rb` so that it runs without errors # done?
 2. Fix the `format_campus_location` method so that it has the correct output
 3. Write the `calculate_recipients` method to return only the recipients that haven't unsubscribed
 4. Write the `print_recipients` method to print a string with a list of the correct recipients
